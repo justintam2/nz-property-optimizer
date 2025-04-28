@@ -50,7 +50,7 @@ net_rental_profit = annual_rent - rental_expenses
 tax_savings = min(rental_expenses, annual_rent) * tax_rate
 
 # --- Interest-Only vs P&I Cash Flow Comparison ---
-pni_monthly = np.pmt(rental_rate / 12, rental_term * 12, -rental_loan)
+pni_monthly = npf.pmt(rental_rate / 12, rental_term * 12, -rental_loan)
 pni_annual = pni_monthly * 12
 interest_only_annual = rental_interest
 
