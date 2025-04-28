@@ -1,5 +1,3 @@
-# streamlit_app.py
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -19,22 +17,22 @@ revolving credit facility on your owner-occupied home loan.
 st.sidebar.header("🔧 Input Parameters")
 
 st.sidebar.subheader("🏠 Owner-Occupied Home Loan")
-home_loan = st.sidebar.number_input("Loan Balance ($)", value=975000, step=1000)
-home_rate = st.sidebar.number_input("Interest Rate (%)", value=4.99, step=0.01) / 100
-home_term = st.sidebar.number_input("Loan Term (years)", value=30, step=1)
-home_insurance = st.sidebar.number_input("Insurance ($/year)", value=4200, step=100)
-home_rates = st.sidebar.number_input("Council Rates ($/year)", value=4300, step=100)
+home_loan = st.sidebar.number_input("Home Loan Balance ($)", value=975000, step=1000)
+home_rate = st.sidebar.number_input("Home Loan Interest Rate (%)", value=4.99, step=0.01) / 100
+home_term = st.sidebar.number_input("Home Loan Term (years)", value=30, step=1)
+home_insurance = st.sidebar.number_input("Home Insurance ($/year)", value=4200, step=100)
+home_rates = st.sidebar.number_input("Home Council Rates ($/year)", value=4300, step=100)
 
 st.sidebar.subheader("🏘 Rental Property")
-rental_loan = st.sidebar.number_input("Loan Balance ($)", value=385000, step=1000)
-rental_rate = st.sidebar.number_input("Interest Rate (%)", value=4.99, step=0.01) / 100
-rental_term = st.sidebar.number_input("Loan Term (years)", value=30, step=1)
-rental_type = st.sidebar.selectbox("Repayment Type", ["Interest-Only", "Principal & Interest"])
+rental_loan = st.sidebar.number_input("Rental Loan Balance ($)", value=385000, step=1000)
+rental_rate = st.sidebar.number_input("Rental Loan Interest Rate (%)", value=4.99, step=0.01) / 100
+rental_term = st.sidebar.number_input("Rental Loan Term (years)", value=30, step=1)
+rental_type = st.sidebar.selectbox("Rental Repayment Type", ["Interest-Only", "Principal & Interest"])
 rental_income_weekly = st.sidebar.number_input("Weekly Rent ($)", value=760)
-rental_insurance = st.sidebar.number_input("Insurance ($/year)", value=3500, step=100)
-rental_rates = st.sidebar.number_input("Council Rates ($/year)", value=4300, step=100)
-rental_maintenance = st.sidebar.number_input("Annual Maintenance ($)", value=2000)
-mgmt_fee_percent = st.sidebar.number_input("Mgmt Fee (%)", value=5.2) / 100
+rental_insurance = st.sidebar.number_input("Rental Insurance ($/year)", value=3500, step=100)
+rental_rates = st.sidebar.number_input("Rental Council Rates ($/year)", value=4300, step=100)
+rental_maintenance = st.sidebar.number_input("Annual Rental Maintenance ($)", value=2000)
+mgmt_fee_percent = st.sidebar.number_input("Property Management Fee (%)", value=5.2) / 100
 depreciation = st.sidebar.number_input("Chattel Depreciation ($)", value=1500)
 
 st.sidebar.subheader("⚙️ Global Settings")
@@ -88,11 +86,11 @@ with col2:
         st.write(f"**Annual Cash Freed (from IO switch):** ${cash_freed:,.0f}")
     else:
         st.write("**Interest-only mode not enabled.**")
-    st.write(f"**Total Extra Paid into Revolving Credit (5 yrs):** ${cash_freed * projection_years:,.0f}")
+    st.write(f"**Total Extra Paid into Revolving Credit ({projection_years} yrs):** ${cash_freed * projection_years:,.0f}")
     st.write(f"**Cumulative Interest Saved on Home Loan:** ${cumulative_saved:,.0f}")
 
 # --- Chart ---
-st.subheader("📈 5-Year Impact of Redirecting Cash to Revolving Credit")
+st.subheader("📈 Impact of Redirecting Cash to Revolving Credit")
 chart_data = pd.DataFrame({
     "Year": list(range(1, projection_years + 1)),
     "Total Extra Paid ($)": principal_paid,
