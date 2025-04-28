@@ -1,4 +1,4 @@
-# 🎈 Blank app template
+# 🎈 nz-property-optimizer app template
 
 A simple Streamlit app template for you to modify!
 
